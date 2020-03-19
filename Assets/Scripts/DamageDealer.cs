@@ -8,6 +8,7 @@ public class DamageDealer : MonoBehaviour
 
     public int GetDamage() { return damage; }
 
+    // destroys owner of damage dealer
     public void Hit()
     {
         Destroy(gameObject);
