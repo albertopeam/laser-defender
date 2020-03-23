@@ -99,7 +99,11 @@ MonoBehaviour:
   laserPrefab: {fileID: 1592451589182777701, guid: 80ffa990e8ee94d18845d4447dd43a8a,
     type: 3}
   projectileSpeed: 20
-  projectileFiringPeriod: 0.2
+  projectileFiringPeriod: 0.1
+  deathSFX: {fileID: 8300000, guid: 5c01ef84e6ac84f56830614e4a6bbd8b, type: 3}
+  deathSFXVolume: 0.75
+  shootSFX: {fileID: 8300000, guid: 0fec1a9cc12f345189d2bfdf133772f9, type: 3}
+  shootSFXVolume: 0.1
 --- !u!60 &-3114054380592005078
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -6,16 +6,21 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-
+    [Header("Enemy")]
     [SerializeField] float health = 200;
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
-    [Header("Explosion")]
+    [Header("Death")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 0.2f;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
+    [Header("Shoot")]
+    [SerializeField] AudioClip shootSFX;
+    [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -62,11 +67,13 @@ public class Enemy : MonoBehaviour
     {
         GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        AudioSource.PlayClipAtPoint(shootSFX, Camera.main.transform.position, shootSFXVolume);
     }
 
     private void Explode() {        
         GameObject explode = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(gameObject);
         Destroy(explode, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
     }
 }
