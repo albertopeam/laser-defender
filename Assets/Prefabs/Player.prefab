@@ -102,6 +102,7 @@ MonoBehaviour:
   projectileFiringPeriod: 0.1
   deathSFX: {fileID: 8300000, guid: 5c01ef84e6ac84f56830614e4a6bbd8b, type: 3}
   deathSFXVolume: 0.75
+  level: {fileID: 8432836381328444652, guid: b675d0955b72a4d3398de1a3848d74ee, type: 3}
   shootSFX: {fileID: 8300000, guid: 0fec1a9cc12f345189d2bfdf133772f9, type: 3}
   shootSFXVolume: 0.1
 --- !u!60 &-3114054380592005078

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [Header("Death")]
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
+    [SerializeField] Level level;
     [Header("Shoot")]
     [SerializeField] AudioClip shootSFX;
     [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.1f;
@@ -90,7 +91,8 @@ public class Player : MonoBehaviour
         health -= damageDealer.GetDamage();        
         if (health <= 0) {
             Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+            AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);        
+            level.LoadGameOver();
         }
     }
 }
