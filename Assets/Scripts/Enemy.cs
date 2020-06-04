@@ -6,8 +6,10 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy")]
+    [Header("Enemy Stats")]
     [SerializeField] float health = 200;
+    [SerializeField] int score = 150;
+    [Header("Enemy")]
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
@@ -17,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 0.2f;
     [SerializeField] AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
+    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;    
     [Header("Shoot")]
     [SerializeField] AudioClip shootSFX;
     [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.25f;
@@ -60,6 +62,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Explode();
+            AddScore();
         }
     }
 
@@ -75,5 +78,10 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         Destroy(explode, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+    }
+
+    private void AddScore()
+    {
+        FindObjectOfType<GameSession>().AddToScore(score);
     }
 }
