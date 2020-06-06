@@ -87,8 +87,9 @@ public class Player : MonoBehaviour
 
         damageDealer.Hit();
 
-        health -= damageDealer.GetDamage();        
+        health -= damageDealer.GetDamage();
         if (health <= 0) {
+            health = 0;
             Die();
             
         }
